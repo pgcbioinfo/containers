@@ -1,0 +1,12 @@
+FROM 	alpine
+
+RUN	cd /tmp \
+&&	wget https://github.com/bbuchfink/diamond/releases/download/v0.9.22/diamond-linux64.tar.gz \
+&&	tar xf diamond-linux64.tar.gz \
+&&	cp diamond /usr/local/bin/diamond \
+&&	cd / \
+&&	rm -rf /tmp/*
+
+LABEL	tool=diamond version=0.9.22
+
+WORKDIR	/data
