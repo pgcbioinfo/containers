@@ -1,0 +1,11 @@
+FROM	python:2-alpine
+
+RUN	apk add freetype libpng lapack openblas libstdc++ tk \
+&&	apk add build-base python-dev freetype-dev libpng-dev openblas-dev \
+&&	pip install numpy \
+&&	pip install matplotlib==1.5.2 \
+&&	pip install qiime \
+&&	sed -e's/: tkagg/: agg/' /usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc \
+&&	apk del build-base python-dev freetype-dev libpng-dev openblas-dev
+
+WORKDIR	/data

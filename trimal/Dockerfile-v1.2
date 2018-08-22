@@ -11,4 +11,6 @@ RUN	apk add build-base libstdc++ \
 &&	rm -rf /tmp/* \
 &&	apk del build-base
 
+LABEL	tool=trimal version=1.2rev59
+
 WORKDIR	/data
