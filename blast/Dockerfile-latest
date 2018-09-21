@@ -1,0 +1,14 @@
+FROM 	alpine
+
+RUN     cd /tmp \
+&&      apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin \
+&&      apk add libbz2 libidn \
+&&      wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.7.1/ncbi-blast-2.7.1+-x64-linux.tar.gz \
+&&      tar xf ncbi-blast-2.7.1+-x64-linux.tar.gz \
+&&      cp -r ncbi-blast-2.7.1+/bin/* /usr/local/bin/ \
+&&      cd / \
+&&      rm -rf /tmp/*
+
+LABEL	tool=blast+ version=2.7.1
+
+WORKDIR	/data
