@@ -1,6 +1,7 @@
 FROM 	alpine
 
-RUN     apk add build-base ncurses-dev zlib-dev bzip2-dev xz-dev \
+RUN	apk add zlib bzip2 xz \
+&&      apk add build-base ncurses-dev zlib-dev bzip2-dev xz-dev \
 &&      cd /tmp \
 &&      wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 \
 &&      tar xf samtools-1.9.tar.bz2 \
