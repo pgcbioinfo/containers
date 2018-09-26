@@ -1,6 +1,6 @@
 FROM 	pgcbioinfo/blast
 
-RUN	apk add bash perl libstdc++ rsync \
+RUN	apk add bash perl libstdc++ rsync libgomp \
 &&	apk add build-base \
 &&	cd /tmp \
 &&	wget https://github.com/DerrickWood/kraken2/archive/v2.0.7-beta.tar.gz \
