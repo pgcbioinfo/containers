@@ -1,4 +1,4 @@
-FROM 	alpine
+FROM 	pgcbioinfo/blast
 
 RUN	apk add bash perl libstdc++ rsync \
 &&	apk add build-base \
