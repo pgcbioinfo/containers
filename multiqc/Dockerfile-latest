@@ -1,0 +1,7 @@
+FROM 	python:3-slim
+
+RUN	pip install multiqc==1.6 pandoc
+
+LABEL	tool=multiqc version=1.6
+
+WORKDIR	/data
