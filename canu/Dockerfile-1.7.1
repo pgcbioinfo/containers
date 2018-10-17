@@ -1,0 +1,16 @@
+FROM 	alpine
+
+RUN	apk add perl \
+&&	cd /tmp \
+&&	wget https://github.com/marbl/canu/releases/download/v1.7.1/canu-1.7.1.Linux-amd64.tar.xz \
+&&	tar xf canu-1.7.1.Linux-amd64.tar.xz \
+&&	cd canu-1.7.1 \
+&&	cp -r Linux-amd64/bin/* /usr/local/bin/ \
+&&	cp -r Linux-amd64/lib/*	/usr/local/lib/ \
+&&	cp -r Linux-amd64/share/* /usr/local/share/ \
+&&	cd / \
+&&	rm -rf /tmp/*
+
+LABEL	tool=canu version=1.7.1
+
+WORKDIR	/data
