@@ -9,7 +9,8 @@ RUN	apk add build-base py2-pip python-dev freetype-dev libpng-dev \
 &&	wget https://downloads.sourceforge.net/project/quast/quast-5.0.0.tar.gz \
 &&	tar xf quast-5.0.0.tar.gz \
 &&	cd quast-5.0.0 \
-&&	python setup.py install
+&&	python setup.py install \
+&&	rm -rf /tmp/*
 
 LABEL	tool=quast version=5.0.0
 
