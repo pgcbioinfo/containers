@@ -1,0 +1,16 @@
+FROM	alpine
+
+RUN	apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin
+
+RUN	apk add build-base py2-pip python-dev freetype-dev libpng-dev \
+&&	apk add python perl freetype libpng \
+&&	pip install matplotlib \
+&&	cd /tmp \
+&&	wget https://downloads.sourceforge.net/project/quast/quast-5.0.0.tar.gz \
+&&	tar xf quast-5.0.0.tar.gz \
+&&	cd quast-5.0.0 \
+&&	python setup.py install
+
+LABEL	tool=quast version=5.0.0
+
+WORKDIR	/data
