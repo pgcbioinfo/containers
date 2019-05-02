@@ -6,10 +6,10 @@ RUN     apk add zlib \
 &&      wget https://github.com/weizhongli/cdhit/releases/download/V4.8.1/cd-hit-v4.8.1-2019-0228.tar.gz \
 &&      tar xf cd-hit-v4.8.1-2019-0228.tar.gz \
 &&      cd cd-hit-v4.8.1-2019-0228 \
-&&      make \
+&&      make MAX_SEQ=1000000 \
 &&      make install \
 &&      cd cd-hit-auxtools \
-&&      make \
+&&      make MAX_SEQ=1000000 \
 &&      cp cd-hit-dup cd-hit-lap read-linker /usr/local/bin \
 &&      cd / \
 &&      rm -rf /tmp/* \
