@@ -1,6 +1,6 @@
 FROM    alpine
 
-RUN     apk add zlib \
+RUN     apk add zlib libgomp \
 &&      apk add build-base zlib-dev \
 &&      cd /tmp \
 &&      wget https://github.com/weizhongli/cdhit/releases/download/V4.8.1/cd-hit-v4.8.1-2019-0228.tar.gz \
