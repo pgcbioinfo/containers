@@ -1,7 +1,7 @@
 FROM    ubuntu
 
 RUN     apt-get update \
-&&      apt-get install -y wget build-essential zlib1g-dev \
+&&      apt-get install -y wget build-essential zlib1g-dev libgomp1 \
 &&      cd /tmp \
 &&      wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.3e.tar.gz \
 &&      tar xf stacks-2.3e.tar.gz \
