@@ -14,4 +14,3 @@ RUN     cd /tmp \
 LABEL tool=blast+ version=2.9.0
 
 WORKDIR /data
-
