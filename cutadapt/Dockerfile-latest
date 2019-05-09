@@ -1,0 +1,10 @@
+FROM 	alpine
+
+RUN	  apk add python3 \
+&&    apk add build-base python3-dev \
+&&    pip3 install cutadapt \
+&&    apk del build-base python3-dev
+
+LABEL	tool=cutadapt version=latest
+
+WORKDIR	/data
