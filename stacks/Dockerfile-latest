@@ -1,0 +1,17 @@
+FROM 	  alpine
+
+RUN	    apk add build-base zlib-dev \
+&&      cd /tmp \
+&&      wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.3e.tar.gz \
+&&      tar xf stacks-2.3e.tar.gz \
+&&      cd stacks-2.3e \
+&&      ./configure \
+&&      make \
+&&      make install \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apk del build-base zlib-dev
+
+LABEL	tool=stacks version=2.3e
+
+WORKDIR	/data
