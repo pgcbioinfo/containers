@@ -7,7 +7,7 @@ RUN     apt-get update \
 &&      tar xf samtools-1.9.tar.bz2 \
 &&      cd samtools-1.9 \
 &&      ./configure \
-&&      make -j \
+&&      make \
 &&      make install \
 &&      cd / \
 &&      apt-get autoremove -y build-essential wget libncurses5-dev zlib1g-dev libbz2-dev liblzma-dev \
@@ -63,7 +63,7 @@ RUN     apt-get update \
 &&      wget https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.8.4.tar.gz \
 &&      tar xf Trinity-v2.8.4.tar.gz \
 &&      cd trinityrnaseq-Trinity-v2.8.4 \
-&&      make -j \
+&&      make \
 &&      make plugins \
 &&      cd / \
 &&      ln -s /opt/trinityrnaseq-Trinity-v2.8.4/Trinity /usr/local/bin/Trinity \
