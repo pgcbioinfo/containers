@@ -13,7 +13,7 @@ RUN     apk add zlib perl \
 &&      rm -rf /tmp/* \
 &&      apk del build-base zlib-dev
 
-RUN     apk add perl-time-hires
+RUN     apk add perl-time-hires perl-xml-parser
 
 LABEL	tool=meme version=5.0.5
 
