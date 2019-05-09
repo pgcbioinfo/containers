@@ -1,6 +1,7 @@
-FROM 	  alpine
+FROM    ubuntu
 
-RUN	    apk add build-base zlib-dev \
+RUN     apt-get update \
+&&      apt-get install -y wget build-essential zlib1g-dev \
 &&      cd /tmp \
 &&      wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.3e.tar.gz \
 &&      tar xf stacks-2.3e.tar.gz \
@@ -9,9 +10,10 @@ RUN	    apk add build-base zlib-dev \
 &&      make \
 &&      make install \
 &&      cd / \
+&&      apt-get autoremove -y wget build-essential zlib1g-dev\
 &&      rm -rf /tmp/* \
-&&      apk del build-base zlib-dev
+&&      rm -rf /var/lib/apt/lists/*
 
-LABEL	tool=stacks version=2.3e
+LABEL tool=stacks version=2.3e
 
-WORKDIR	/data
+WORKDIR /data
