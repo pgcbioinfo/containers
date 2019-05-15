@@ -2,7 +2,7 @@ FROM    ubuntu
 
 RUN     cd /tmp \
 &&      apt-get update \
-&&      apt-get install -y python
+&&      apt-get install -y python \
 &&      apt-get install -y wget \
 &&      wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz \
 &&      tar xf tophat-2.1.1.Linux_x86_64.tar.gz \
