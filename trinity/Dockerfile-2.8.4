@@ -70,6 +70,19 @@ RUN     apt-get update \
 &&      apt-get autoremove -y wget build-essential cmake zlib1g-dev \
 &&      rm -rf /var/lib/apt/lists/*
 
+RUN     apt-get update \
+&&      apt-get install -y wget build-essential zlib1g-dev \
+&&      cd /tmp \
+&&      wget https://github.com/deweylab/RSEM/archive/v1.3.1.tar.gz \
+&&      tar xf v1.3.1.tar.gz \
+&&      cd RSEM-1.3.1 \
+&&      make \
+&&      make install \ 
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget build-essential zlib1g-dev \
+&&      rm -rf /var/lib/apt/lists/*
+
 ENV     TRINITY_HOME /opt/trinityrnaseq-Trinity-v2.8.4
 
 LABEL	  tool=trinity version=2.8.4
