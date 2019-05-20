@@ -83,7 +83,14 @@ RUN     apt-get update \
 &&      apt-get autoremove -y wget build-essential zlib1g-dev \
 &&      rm -rf /var/lib/apt/lists/*
 
+RUN     apt-get update \
+&&      DEBIAN_FRONTEND=noninteractive apt-get install -y r-base \
+&&      Rscript -e 'source("https://bioconductor.org/biocLite.R")' -e 'biocLite("edgeR")' \
+&&      rm -rf /var/lib/apt/lists/*
+
 ENV     TRINITY_HOME /opt/trinityrnaseq-Trinity-v2.8.4
+ENV     LANG C.UTF-8
+ENV     LC_ALL C.UTF-8
 
 LABEL	  tool=trinity version=2.8.4
 
