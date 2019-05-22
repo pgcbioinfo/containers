@@ -1,8 +1,0 @@
-FROM    ruby
-
-RUN     gem install transrate -v 1.0.1 \
-&&      transrate --install-deps all
-
-LABEL tool=transrate version=1.0.1
-
-WORKDIR /data
