@@ -20,6 +20,7 @@ RUN     cd /tmp \
 &&      cd SalmonBeta-0.6.1_DebianSqueeze \
 &&      cp bin/* /usr/local/bin/ \
 &&      cp lib/* /usr/local/lib/ \
+&&      rm /usr/local/lib/librt.so.1 \
 &&      cd / \
 &&      rm -rf /tmp/* \
 &&      apt-get autoremove -y wget \
