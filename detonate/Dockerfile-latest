@@ -14,6 +14,8 @@ RUN   apt-get update \
 &&    apt-get autoremove -y wget \
 &&    rm -rf /var/lib/apt/lists/*
 
+ENV   LANG=C
+
 LABEL	tool=detonate version=0.1.11
 
 WORKDIR	/data
