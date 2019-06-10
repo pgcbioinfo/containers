@@ -1,0 +1,17 @@
+FROM    ubuntu
+
+RUN     cd /opt \
+&&      apt-get update \
+&&      apt-get install -y wget \
+&&      wget https://github.com/eggnogdb/eggnog-mapper/archive/1.0.3.tar.gz \
+&&      tar xf 1.0.3.tar.gz \
+&&      rm 1.0.3.tar.gz \
+&&      ln -s /opt/eggnog-mapper-1.0.3/download_eggnog_data.py /usr/local/bin \
+&&      ln -s /opt/eggnog-mapper-1.0.3/emapper.py /usr/local/bin \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /tmp/* \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL tool=eggnog-mapper version=1.0.3
+
+WORKDIR /data
