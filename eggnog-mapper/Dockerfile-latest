@@ -2,6 +2,7 @@ FROM    ubuntu
 
 RUN     cd /opt \
 &&      apt-get update \
+&&      apt-get install -y python \
 &&      apt-get install -y wget \
 &&      wget https://github.com/eggnogdb/eggnog-mapper/archive/1.0.3.tar.gz \
 &&      tar xf 1.0.3.tar.gz \
