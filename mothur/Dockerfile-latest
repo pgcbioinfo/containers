@@ -6,7 +6,7 @@ RUN     cd /tmp \
 &&      wget https://github.com/mothur/mothur/releases/download/v.1.42.2/Mothur.linux_64_noReadline.zip \
 &&      unzip Mothur.linux_64_noReadline.zip \
 &&      mv mothur /opt/mothur \
-&&      ln -s /opt/mothur/{mothur,uchime,vsearch} /usr/local/bin
+&&      ln -s /opt/mothur/{mothur,uchime,vsearch} /usr/local/bin \
 &&      cd / \
 &&      rm -rf /tmp/* \
 &&      apt-get autoremove -y wget unzip \
