@@ -14,7 +14,7 @@ RUN	cd /tmp \
 &&	cd / \
 &&	apt autoremove -y wget \
 &&	apt autoremove -y libexpat1-dev libboost-all-dev \
-&&	apt autoremove -y gcc make flex xdd \
+&&	apt autoremove -y gcc make flex xxd \
 &&	rm -rf /tmp/* \
 &&	rm -rf /var/lib/apt/list/*
 
