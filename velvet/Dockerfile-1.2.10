@@ -1,0 +1,23 @@
+FROM	ubuntu
+
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y wget gcc make \
+&&	apt-get install -y zlib1g-dev \
+&&	wget https://github.com/dzerbino/velvet/archive/v1.2.10.tar.gz \
+&&	tar xf v1.2.10.tar.gz \
+&&	cd velvet-1.2.10 \
+&&	make \
+&&	cd .. \
+&&	mv velvet-1.2.10/ /opt/velvet \
+&&	ln -s /opt/velvet/velveth /usr/local/bin \
+&&	ln -s /opt/velvet/velvetg /usr/local/bin \
+&&	cd / \
+&&	apt autoremove -y wget gcc make \
+&&	apt autoremove -y zlib1g-dev \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/list/*
+
+LABEL	tool=velvet version=1.2.10
+
+WORKDIR /data
