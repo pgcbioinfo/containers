@@ -71,6 +71,19 @@ RUN	cd /tmp \
 &&	rm -rf /tmp/* \
 &&	rm -rf /var/lib/apt/lists/*
 
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y wget \
+&&	wget ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux.tbl2asn.gz \
+&&	gunzip linux.tbl2asn.gz \
+&&	mv linux.tbl2asn tbl2asn \
+&&	chmod +x tbl2asn \
+&&	mv tbl2asn /opt/prokka-1.12/binaries/linux/ \
+&&	cd / \
+&&	apt autoremove -y wget \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/lists/*
+
 LABEL tool=prokka version=1.12.0
 
 WORKDIR /data
