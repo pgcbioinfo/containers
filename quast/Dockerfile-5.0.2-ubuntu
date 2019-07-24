@@ -4,7 +4,7 @@ RUN	cd /tmp \
 &&	apt-get update \
 &&	apt-get install -y wget \
 &&	apt-get install -y --no-install-recommends python gcc perl make zlib1g-dev \
-&&	apt-get install -y --no-install-recommends pkg-config libfreetype6-dev libpng-dev python-matplotlib \
+&&	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pkg-config libfreetype6-dev libpng-dev python-matplotlib \
 &&	wget https://downloads.sourceforge.net/project/quast/quast-5.0.2.tar.gz \
 &&	tar -xzf quast-5.0.2.tar.gz \
 &&	cd quast-5.0.2 \
