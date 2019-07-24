@@ -8,6 +8,7 @@ RUN	cd /tmp \
 &&	wget https://downloads.sourceforge.net/project/quast/quast-5.0.2.tar.gz \
 &&	tar -xzf quast-5.0.2.tar.gz \
 &&	cd quast-5.0.2 \
+&&	./setup.py install \
 &&	cd / \
 &&	apt autoremove -y wget \
 &&	rm -rf /tmp/* \
