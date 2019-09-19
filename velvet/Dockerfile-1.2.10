@@ -7,7 +7,7 @@ RUN	cd /tmp \
 &&	wget https://github.com/dzerbino/velvet/archive/v1.2.10.tar.gz \
 &&	tar xf v1.2.10.tar.gz \
 &&	cd velvet-1.2.10 \
-&&	make \
+&&	make MAXKMERLENGTH=150 \
 &&	cd .. \
 &&	mv velvet-1.2.10/ /opt/velvet \
 &&	ln -s /opt/velvet/velveth /usr/local/bin \
