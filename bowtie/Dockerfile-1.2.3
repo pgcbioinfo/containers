@@ -1,0 +1,17 @@
+FROM	ubuntu:18.04
+
+RUN     apt-get update \
+&&      apt-get install -y perl python \
+&&      apt-get install -y wget unzip \
+&&      cd /tmp \
+&&	wget https://github.com/BenLangmead/bowtie/releases/download/v1.2.3/bowtie-1.2.3-linux-x86_64.zip \
+&&      unzip bowtie-1.2.3-linux-x86_64.zip \
+&&      cp bowtie-1.2.3-linux-x86_64/bowtie* /usr/local/bin/ \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL	tool=bowtie version=1.2.3
+
+WORKDIR /data
