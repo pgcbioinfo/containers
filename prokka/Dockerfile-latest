@@ -1,18 +1,1 @@
-FROM    ubuntu:18.04
-
-RUN	cd /tmp \
-&&	apt-get update \
-&&	apt-get install -y libdatetime-perl libxml-simple-perl libdigest-md5-perl default-jre bioperl cpanminus \ 
-&&	apt-get install -y wget \
-&&	cpanm Bio::Perl \
-&&	wget https://github.com/tseemann/prokka/archive/v1.14.0.tar.gz \
-&&	tar xf v1.14.0.tar.gz \
-&&	mv prokka-1.14.0 /opt \
-&&	ln -s /opt/prokka-1.14.0/bin/* /usr/local/bin \
-&&	apt autoremove -y wget \
-&&	rm -rf /tmp/* \
-&&	rm -rf /var/lib/apt/lists/* 
-
-LABEL tool=prokka version=1.14.0
-
-WORKDIR /data
+Dockerfile-1.14.0
