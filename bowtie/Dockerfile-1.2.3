@@ -9,7 +9,7 @@ RUN     apt-get update \
 &&      cp bowtie-1.2.3-linux-x86_64/bowtie* /usr/local/bin/ \
 &&      cd / \
 &&      rm -rf /tmp/* \
-&&      apt-get autoremove -y wget \
+&&      apt-get autoremove -y wget unzip \
 &&      rm -rf /var/lib/apt/lists/*
 
 LABEL	tool=bowtie version=1.2.3
