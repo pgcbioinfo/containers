@@ -3,9 +3,10 @@ FROM	ubuntu
 RUN	cd /tmp \
 &&	apt-get update \
 &&	apt-get install -y openjdk-11-jre-headless \
-&&	apt-get install -y wget build-essential\
+&&	apt-get install -y libfindbin-libs-perl \
+&&	apt-get install -y wget \
 &&	wget https://github.com/chgibb/FastQC0.11.5/releases/download/v0.11.5/FastQC.tar.gz \
-&&	tar xf FastQC.tar.gz  \
+&&	tar xf FastQC.tar.gz \
 &&	cd FastQC \
 &&	chmod 755 fastqc \
 &&	cd .. \
