@@ -1,4 +1,4 @@
-FROM    ubuntu
+FROM    ubuntu:18.04
 
 RUN     cd /tmp \
 &&      apt-get update \
@@ -12,6 +12,6 @@ RUN     cd /tmp \
 &&      rm -rf /tmp/* \
 &&      rm -rf /var/lib/apt/lists/*
 
-LABEL tool=tophat2 version=2.1.1
+LABEL   tool=tophat2 version=2.1.1
 
 WORKDIR /data
