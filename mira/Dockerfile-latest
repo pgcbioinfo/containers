@@ -1,0 +1,23 @@
+FROM ubuntu
+
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y gcc make flex xxd \
+&&	apt-get install -y libexpat1-dev libboost-all-dev \
+&&	apt-get install -y wget \
+&&	wget https://github.com/bachev/mira/releases/download/V5rc1/mira-V5rc1.tar.bz2 \
+&&	tar xf mira-V5rc1.tar.bz2 \
+&&	cd mira-V5rc1 \
+&&	./configure --enable-mirastatic \
+&&	make \
+&&	make install \
+&&	cd / \
+&&	apt autoremove -y wget \
+&&	apt autoremove -y libexpat1-dev libboost-all-dev \
+&&	apt autoremove -y gcc make flex xxd \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/list/*
+
+LABEL	tool=mira version=V5rc1
+
+WORKDIR /data

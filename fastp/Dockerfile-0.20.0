@@ -1,0 +1,18 @@
+FROM    ubuntu
+
+RUN     apt-get update \
+&&      apt-get install -y wget build-essential zlib1g-dev \
+&&      cd /tmp \
+&&      wget https://github.com/OpenGene/fastp/archive/v0.20.0.tar.gz\
+&&      tar xf v0.20.0.tar.gz \
+&&      cd fastp-0.20.0 \
+&&      make \
+&&      make install \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget build-essential zlib1g-dev \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL	  tool=fastp version=0.20.0
+
+WORKDIR	/data
