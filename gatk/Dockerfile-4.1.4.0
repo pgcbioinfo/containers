@@ -1,0 +1,5 @@
+FROM	broadinstitute/gatk:4.1.4.0
+
+LABEL	tool=gatk version=4.1.4.0
+
+WORKDIR	/data
