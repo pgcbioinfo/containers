@@ -1,0 +1,31 @@
+FROM	ubuntu
+
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y wget make gcc g++ \
+&&	apt-get install -y zlib1g-dev libncurses5-dev \
+&&	wget https://github.com/aquaskyline/SOAPdenovo2/archive/r241.tar.gz \
+&&	tar xf r241.tar.gz \
+&&	wget https://sourceforge.net/projects/samtools/files/samtools/0.1.19/samtools-0.1.19.tar.bz2 \
+&&	tar xf samtools-0.1.19.tar.bz2 \
+&&	cd samtools-0.1.19 \
+&&	make \
+&&	cp libbam.a /tmp/SOAPdenovo2-r241/fusion/inc/libbam.a \
+&&	cp libbam.a /tmp/SOAPdenovo2-r241/sparsePregraph/inc/libbam.a \
+&&	cp libbam.a /tmp/SOAPdenovo2-r241/standardPregraph/inc/libbam.a \
+&&	cd /tmp/SOAPdenovo2-r241 \
+&&	make \
+&&	cd .. \
+&&	mv SOAPdenovo2-r241/ /opt/soapdenovo \
+&&	ln -s /opt/soapdenovo/SOAPdenovo-127mer /usr/local/bin \
+&&	ln -s /opt/soapdenovo/SOAPdenovo-63mer /usr/local/bin \
+&&	ln -s /opt/soapdenovo/SOAPdenovo-fusion /usr/local/bin \
+&&	cd / \
+&&	apt autoremove -y wget make gcc g++ \
+&&	apt autoremove -y zlib1g-dev libncurses5-dev \
+&&	rm -rf /tmp* \
+&&	rm -rf /var/lib/apt/list/*
+
+LABEL	tool=soapdenovo version=2.04_r241
+
+WORKDIR /data
