@@ -1,0 +1,17 @@
+FROM    ubuntu:18.04
+
+RUN     cd /tmp \
+&&      apt-get update \
+&&      apt-get install -y python \
+&&      apt-get install -y wget \
+&&      wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz \
+&&      tar xf tophat-2.1.1.Linux_x86_64.tar.gz \
+&&      cp -r tophat-2.1.1.Linux_x86_64/* /usr/local/bin/ \
+&&      cd / \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /tmp/* \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL   tool=tophat2 version=2.1.1
+
+WORKDIR /data
