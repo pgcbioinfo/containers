@@ -1,17 +1,1 @@
-FROM 	  alpine
-
-RUN	    apk add zlib libstdc++ \
-&&      apk add build-base zlib-dev \
-&&      cd /tmp \
-&&      wget https://github.com/OpenGene/fastp/archive/v0.20.0.tar.gz \
-&&      tar xf v0.20.0.tar.gz \
-&&      cd fastp-0.20.0 \
-&&      make \
-&&      make install \
-&&      cd / \
-&&      rm -rf /tmp/* \
-&&      apk del build-base zlib-dev 
-
-LABEL	  tool=fastp version=0.20.0
-
-WORKDIR	/data
+Dockerfile-0.20.0
