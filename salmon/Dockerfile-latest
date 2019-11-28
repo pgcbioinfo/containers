@@ -1,0 +1,18 @@
+FROM 	  ubuntu
+
+RUN     apt-get update \
+&&      apt-get install -y wget \
+&&      cd /tmp \
+&&      wget https://github.com/COMBINE-lab/salmon/releases/download/v0.13.1/salmon-0.13.1_linux_x86_64.tar.gz \
+&&      tar xf salmon-0.13.1_linux_x86_64.tar.gz \
+&&      cd salmon-latest_linux_x86_64 \
+&&      cp bin/* /usr/local/bin/ \
+&&      cp lib/* /usr/local/lib/ \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL	  tool=salmon version=0.13.1
+
+WORKDIR /data
