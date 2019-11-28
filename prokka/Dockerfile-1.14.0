@@ -1,0 +1,31 @@
+FROM    ubuntu:18.04
+
+RUN     cd /tmp \
+&&      apt-get update \
+&&      apt-get install -y wget \
+&&      wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.9.0/ncbi-blast-2.9.0+-x64-linux.tar.gz \
+&&      tar xf ncbi-blast-2.9.0+-x64-linux.tar.gz \
+&&      cp -r ncbi-blast-2.9.0+/bin/* /usr/local/bin/ \
+&&      cd / \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /tmp/* \
+&&      rm -rf /var/lib/apt/lists/*
+
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y libdatetime-perl libxml-simple-perl libdigest-md5-perl default-jre bioperl cpanminus less \ 
+&&	apt-get install -y wget \
+&&	cpanm Bio::Perl \
+&&	wget https://github.com/tseemann/prokka/archive/v1.14.0.tar.gz \
+&&	tar xf v1.14.0.tar.gz \
+&&	mv prokka-1.14.0 /opt \
+&&	ln -s /opt/prokka-1.14.0/bin/* /usr/local/bin \
+&&	apt autoremove -y wget \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/lists/* 
+
+RUN	prokka --setupdb
+
+LABEL tool=prokka version=1.14.0
+
+WORKDIR /data
