@@ -1,0 +1,18 @@
+FROM    alpine:3
+
+RUN     apk add perl \
+&&      apk add build-base zlib-dev \
+&&      cd /tmp \
+&&      wget https://github.com/vcftools/vcftools/releases/download/v0.1.16/vcftools-0.1.16.tar.gz \
+&&      tar xf vcftools-0.1.16.tar.gz \
+&&      cd vcftools-0.1.16 \
+&&      ./configure \
+&&      make \
+&&      make install \
+&&      cd / \
+&&      rm -rf /tmp \
+&&      apk del build-base zlib-dev
+
+LABEL	  tool=vcftools version=0.1.16
+
+WORKDIR /data
