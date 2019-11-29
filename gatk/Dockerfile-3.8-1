@@ -1,0 +1,9 @@
+FROM	broadinstitute/gatk3:3.8-1
+
+RUN	echo '#!/bin/bash' > /usr/local/bin/gatk \
+&&	echo 'java -jar /usr/GenomeAnalysisTK.jar $*' >> /usr/local/bin/gatk \
+&&	chmod +x /usr/local/bin/gatk
+
+LABEL	tool=gatk version=3.8-1
+
+WORKDIR	/data

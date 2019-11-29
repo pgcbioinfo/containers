@@ -1,0 +1,23 @@
+FROM	centos:7
+
+RUN	cd /tmp \
+&&	yum -y install libgomp libmpc mpfr gsl openmpi boost \
+&&	yum -y install gcc gcc-c++ make zlib-devel xz-devel gsl-devel boost-devel openmpi-devel \
+&&	source /etc/profile.d/modules.sh \
+&&	module load mpi \
+&&	curl -L -O https://excellmedia.dl.sourceforge.net/project/shore/Release_0.9/shore-0.9.3.tar.gz \
+&&	tar xf shore-0.9.3.tar.gz \
+&&	cd shore-0.9.3 \
+&&	./configure --with-mpi \
+&&	make \
+&&	make install \
+&&	cd / \
+&&	rm -rf /tmp/* \
+&&	yum autoremove gcc gcc-c++ make zlib-devel xz-devel gsl-devel boost-devel openmpi-devel \
+&&	yum clean all \
+&&	rm -rf /var/cache/yum
+
+LABEL tool=shore version=0.9.3
+
+WORKDIR /data
+
