@@ -1,12 +1,1 @@
-FROM 	alpine
-
-RUN 	wget http://cab.spbu.ru/files/release3.13.0/SPAdes-3.13.0-Linux.tar.gz \
-&& 	tar xf SPAdes-3.13.0-Linux.tar.gz \
-&& 	cp -r SPAdes-3.13.0-Linux/bin/* /usr/local/bin \
-&& 	cp -r SPAdes-3.13.0-Linux/share/* /usr/local/share \
-&& 	apk add python \
-&& 	rm -rf SPAdes-3.13.0-Linux
-
-LABEL	tool=spades version=3.13.0
-
-WORKDIR	/data
+Dockerfile-3.13.1
