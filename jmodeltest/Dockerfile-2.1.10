@@ -1,0 +1,13 @@
+FROM	ubuntu:18.04
+
+RUN	  apt-get update \
+&&    apt-get -y install default-jre \
+&&    apt-get -y install wget \
+&&    cd /tmp \
+&&    wget https://github.com/ddarriba/jmodeltest2/files/157117/jmodeltest-2.1.10.tar.gz \
+&&    tar xf jmodeltest-2.1.10.tar.gz \
+&&    cd jmodeltest-2.1.10 \
+
+LABEL tool=jmodeltest version=2.1.10
+
+WORKDIR	/data
