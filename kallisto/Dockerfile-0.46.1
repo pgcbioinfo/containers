@@ -1,0 +1,16 @@
+FROM    ubuntu:18.04
+
+RUN     apt-get update \
+&&      apt-get install -y wget \
+&&      cd /tmp \
+&&      wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz \
+&&	tar xf kallisto_linux-v0.46.1.tar.gz \
+&&	cp kallisto/kallisto /usr/local/bin \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL   tool=kallisto version=0.46.1
+
+WORKDIR /data

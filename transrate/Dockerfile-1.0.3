@@ -1,0 +1,18 @@
+FROM    ubuntu:14.04
+
+RUN     apt-get update \
+&&      apt-get -y install wget \
+&&      cd /tmp \
+&&      wget https://bintray.com/artifact/download/blahah/generic/transrate-1.0.3-linux-x86_64.tar.gz \
+&&      tar xf transrate-1.0.3-linux-x86_64.tar.gz \
+&&      mv transrate-1.0.3-linux-x86_64 /opt/transrate \
+&&      ln -s /opt/transrate/transrate /usr/local/bin/transrate \
+&&      transrate --install-deps ref \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL   tool=transrate version=1.0.3
+
+WORKDIR /data
