@@ -1,12 +1,15 @@
-FROM 	alpine
+FROM    alpine:3
 
-RUN 	wget http://cab.spbu.ru/files/release3.13.0/SPAdes-3.13.0-Linux.tar.gz \
-&& 	tar xf SPAdes-3.13.0-Linux.tar.gz \
-&& 	cp -r SPAdes-3.13.0-Linux/bin/* /usr/local/bin \
-&& 	cp -r SPAdes-3.13.0-Linux/share/* /usr/local/share \
-&& 	apk add python \
-&& 	rm -rf SPAdes-3.13.0-Linux
+RUN 	apk add python
 
-LABEL	tool=spades version=3.13.0
+RUN     cd /tmp \
+&&      wget https://github.com/ablab/spades/releases/download/v3.13.0/SPAdes-3.13.0-Linux.tar.gz \
+&&      tar xf SPAdes-3.13.0-Linux.tar.gz \
+&&      cp -r SPAdes-3.13.0-Linux/bin/* /usr/local/bin \
+&&      cp -r SPAdes-3.13.0-Linux/share/* /usr/local/share \
+&&      cd / \
+&&      rm -rf /tmp/*
 
-WORKDIR	/data
+LABEL   tool=spades version=3.13.0
+
+WORKDIR /data
