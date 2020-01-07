@@ -1,0 +1,9 @@
+FROM    ubuntu:18.04
+
+RUN     apt-get update \
+&&      apt-get install -y mrbayes-mpi \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL	tool=mrbayes version=3.2.6
+
+WORKDIR /data
