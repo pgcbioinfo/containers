@@ -1,16 +1,1 @@
-FROM    ubuntu
-
-RUN     cd /tmp \
-&&      apt-get update \
-&&      apt-get install -y wget unzip python \
-&&      wget http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip \
-&&      unzip hisat2-2.1.0-Linux_x86_64.zip \
-&&      cp -r hisat2-2.1.0/hisat* hisat2-2.1.0/extract*.py /usr/local/bin/ \
-&&      cd / \
-&&      apt-get autoremove -y wget unzip \
-&&      rm -rf /tmp/* \
-&&      rm -rf /var/lib/apt/lists/*
-
-LABEL tool=hisat2 version=2.1.0
-
-WORKDIR /data
+Dockerfile-2.1.0
