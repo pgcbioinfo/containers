@@ -1,4 +1,4 @@
-FROM 	  ubuntu
+FROM    ubuntu:18.04
 
 RUN     apt-get update \
 &&      apt-get install -y wget \
@@ -13,6 +13,6 @@ RUN     apt-get update \
 &&      apt-get autoremove -y wget \
 &&      rm -rf /var/lib/apt/lists/*
 
-LABEL	  tool=salmon version=0.13.1
+LABEL   tool=salmon version=0.13.1
 
 WORKDIR /data
