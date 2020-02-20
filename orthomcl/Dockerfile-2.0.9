@@ -1,0 +1,17 @@
+FROM    ncbi/blast:2.9.0
+
+RUN	cd /tmp \
+&&	apt-get update \
+&&	apt-get install -y git build-essential \
+&&	git clone https://github.com/stajichlab/OrthoMCL.git \
+&&	cd OrthoMCL \
+&&	cp -r bin/* /usr/local/bin/ \
+&&	cp -r lib/* /usr/local/lib/ \
+&&	PERL_MM_USE_DEFAULT=1 cpan DBI DBD::SQLite \
+&&	cd / \
+&&	apt-get autoremove -y git build-essential \
+&&	rm -rf /tmp/* 
+
+LABEL   tool=orthomcl version=2.0.9
+
+WORKDIR /data
