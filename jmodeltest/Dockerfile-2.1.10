@@ -8,7 +8,7 @@ RUN	apt-get update \
 &&	tar xf jmodeltest-2.1.10.tar.gz \
 &&	cd jmodeltest-2.1.10 \
 &&	echo '#!/bin/bash' > /usr/local/bin/jModelTest \
-&&	echo 'java -jar /opt/jmodeltest-2.1.10 $*' >> /usr/local/bin/jModelTest \
+&&	echo 'java -jar /opt/jmodeltest-2.1.10/jModelTest.jar $*' >> /usr/local/bin/jModelTest \
 &&	chmod +x /usr/local/bin/jModelTest \
 &&	apt-get -y autoremove wget \
 &&	rm -rf /var/lib/apt/lists/*
