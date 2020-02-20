@@ -10,6 +10,7 @@ RUN	cd /tmp \
 &&	PERL_MM_USE_DEFAULT=1 cpan DBI DBD::SQLite \
 &&	cd / \
 &&	apt-get autoremove -y git build-essential \
+&&	rm -rf /var/lib/apt/lists \
 &&	rm -rf /tmp/* 
 
 LABEL   tool=orthomcl version=2.0.9
