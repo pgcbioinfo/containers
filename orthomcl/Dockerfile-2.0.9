@@ -2,7 +2,7 @@ FROM    ncbi/blast:2.9.0
 
 RUN	cd /tmp \
 &&	apt-get update \
-&&	apt-get install -y libdbi-perl libdbd-sqlite3-perl sqlite3 \
+&&	apt-get install -y libdbi-perl libdbd-sqlite3-perl sqlite3 mcl \
 &&	apt-get install -y git \
 &&	git clone https://github.com/stajichlab/OrthoMCL.git \
 &&	cd OrthoMCL \
