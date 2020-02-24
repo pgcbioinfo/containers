@@ -2,14 +2,14 @@ FROM    ncbi/blast:2.9.0
 
 RUN	cd /tmp \
 &&	apt-get update \
-&&	apt-get install -y git build-essential \
+&&	apt-get install libdbi-perl libdbd-sqlite3-perl sqlite3 \
+&&	apt-get install -y git \
 &&	git clone https://github.com/stajichlab/OrthoMCL.git \
 &&	cd OrthoMCL \
 &&	cp -r bin/* /usr/local/bin/ \
 &&	cp -r lib/* /usr/local/lib/ \
-&&	PERL_MM_USE_DEFAULT=1 cpan DBI DBD::SQLite \
 &&	cd / \
-&&	apt-get autoremove -y git build-essential \
+&&	apt-get autoremove -y git \
 &&	rm -rf /var/lib/apt/lists \
 &&	rm -rf /tmp/* 
 
