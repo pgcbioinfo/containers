@@ -7,6 +7,7 @@ RUN     cd /tmp \
 &&      wget https://github.com/loneknightpy/idba/releases/download/1.1.3/idba-1.1.3.tar.gz \
 &&      tar xf idba-1.1.3.tar.gz \
 &&      cd idba-1.1.3 \
+&&	sed -i -e s/kMaxShortSequence = 128/kMaxShortSequence = 512/ src/sequence/short_sequence.h \
 &&      ./configure \
 &&      make \
 &&      cd .. \
