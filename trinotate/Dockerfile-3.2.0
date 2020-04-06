@@ -1,0 +1,15 @@
+FROM    pgcbioinfo/blast:2.9.0
+
+RUN     cd /opt \
+&&      apt-get update \
+&&      apt-get install -y libfindbin-libs-perl libdbi-perl libdbd-sqlite3-perl sqlite3 \
+&&	wget https://github.com/Trinotate/Trinotate/archive/Trinotate-v3.2.0.tar.gz \
+
+&&      cd / \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /tmp/* \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL   tool=trinotate version=3.2.0
+
+WORKDIR /data
