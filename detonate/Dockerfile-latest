@@ -1,0 +1,33 @@
+FROM 	ubuntu
+
+RUN   apt-get update \
+&&    DEBIAN_FRONTEND=noninteractive apt-get install -y libgomp1 perl-modules r-base \
+&&    apt-get install -y wget \
+&&    cd /tmp \
+&&    wget http://deweylab.biostat.wisc.edu/detonate/detonate-1.11-precompiled.tar.gz \
+&&    tar xf detonate-1.11-precompiled.tar.gz \
+&&    mv detonate-1.11-precompiled /opt/detonate \
+&&    ln -s /opt/detonate/ref-eval/{ref-eval,ref-eval-estimate-true-assembly} /usr/local/bin \
+&&    ln -s /opt/detonate/rsem-eval/{rsem-build-read-index,rsem-eval-calculate-score,rsem-eval-estimate-transcript-length-distribution,rsem-eval-run-em,rsem-extract-reference-transcripts,rsem-parse-alignments,rsem-plot-model,rsem-preref,rsem-sam-validator,rsem-scan-for-paired-end-reads,rsem-simulate-reads,rsem-synthesis-reference-transcripts} /usr/local/bin \
+&&	  cd / \
+&&	  rm -rf /tmp/* \
+&&    apt-get autoremove -y wget \
+&&    rm -rf /var/lib/apt/lists/*
+
+ENV   LANG=C
+
+RUN     apt-get update \
+&&      apt-get install -y perl python \
+&&      apt-get install -y wget unzip \
+&&      cd /tmp \
+&&      wget https://github.com/BenLangmead/bowtie2/releases/download/v2.3.5.1/bowtie2-2.3.5.1-linux-x86_64.zip \
+&&      unzip bowtie2-2.3.5.1-linux-x86_64.zip \
+&&      cp bowtie2-2.3.5.1-linux-x86_64/bowtie2* /usr/local/bin/ \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apt-get autoremove -y wget \
+&&      rm -rf /var/lib/apt/lists/*
+
+LABEL	tool=detonate version=0.1.11
+
+WORKDIR	/data
