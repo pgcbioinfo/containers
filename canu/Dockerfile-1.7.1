@@ -1,6 +1,6 @@
 FROM 	alpine
 
-RUN	apk add perl \
+RUN	apk add perl openjdk11 gnuplot \
 &&	cd /tmp \
 &&	wget https://github.com/marbl/canu/releases/download/v1.7.1/canu-1.7.1.Linux-amd64.tar.xz \
 &&	tar xf canu-1.7.1.Linux-amd64.tar.xz \
