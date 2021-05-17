@@ -1,0 +1,5 @@
+FROM    ncbi/blast:2.9.0
+
+LABEL   tool=blast+ version=2.9.0
+
+WORKDIR /data

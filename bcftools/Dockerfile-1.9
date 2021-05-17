@@ -1,0 +1,18 @@
+FROM 	alpine
+
+RUN	apk add zlib bzip2 xz libbz2 \
+&&      apk add build-base zlib-dev bzip2-dev xz-dev \
+&&      cd /tmp \
+&&	wget https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2 \
+&&      tar xf bcftools-1.9.tar.bz2 \
+&&      cd bcftools-1.9 \
+&&      ./configure \
+&&      make \
+&&      make install \
+&&      cd / \
+&&      rm -rf /tmp/* \
+&&      apk del build-base zlib-dev bzip2-dev xz-dev
+
+LABEL	tool=bcftools version=1.9
+
+WORKDIR	/data

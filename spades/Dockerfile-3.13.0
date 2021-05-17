@@ -1,0 +1,15 @@
+FROM    alpine:3
+
+RUN 	apk add python
+
+RUN     cd /tmp \
+&&      wget https://github.com/ablab/spades/releases/download/v3.13.0/SPAdes-3.13.0-Linux.tar.gz \
+&&      tar xf SPAdes-3.13.0-Linux.tar.gz \
+&&      cp -r SPAdes-3.13.0-Linux/bin/* /usr/local/bin \
+&&      cp -r SPAdes-3.13.0-Linux/share/* /usr/local/share \
+&&      cd / \
+&&      rm -rf /tmp/*
+
+LABEL   tool=spades version=3.13.0
+
+WORKDIR /data
