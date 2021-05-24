@@ -16,3 +16,6 @@ RUN	apt-get update \
 &&	rm -rf /var/lib/apt/*
 
 LABEL	tool=smrtlink version=10.1.0
+
+RUN	useradd smrtanalysis
+USER	smrtanalysis
