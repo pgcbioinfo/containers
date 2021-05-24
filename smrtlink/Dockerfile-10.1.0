@@ -21,5 +21,5 @@ RUN	apt-get update \
 
 LABEL	tool=smrtlink version=10.1.0
 
-RUN	useradd smrtanalysis
+RUN	useradd smrtanalysis -d /data
 USER	smrtanalysis
