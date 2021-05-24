@@ -1,0 +1,16 @@
+FROM	ubuntu:18.04
+
+WORKDIR /data
+
+RUN	apt-get update \
+&&	apt-get install -y wget unzip \
+&&	cd /tmp \
+&&	wget https://downloads.pacbcloud.com/public/software/installers/smrtlink_10.1.0.119588.zip \
+&&	unzip smrtlink_10.1.0.119588.zip \
+&&	mv smrtlink_10.1.0.119588.run /usr/local/bin/ \
+&&	cd /usr/local/bin \
+&&	ln -s smrtlink_10.1.0.119588.run smrtlink.run \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/*
+
+LABEL	tool=smrtlink version=10.1.0
