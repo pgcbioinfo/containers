@@ -15,7 +15,13 @@ RUN	apt-get update \
 &&	rm -rf /tmp/* \
 &&	rm -rf /var/lib/apt/*
 
+RUN	apt-get update \
+&&	apt-get install -y net-tools \
+&&	rm -rf /var/lib/apt/*
+
 LABEL	tool=smrtlink version=10.1.0
 
 RUN	useradd smrtanalysis
 USER	smrtanalysis
+
+RUN	
