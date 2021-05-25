@@ -1,7 +1,7 @@
 FROM 	ubuntu:18.04
 
 RUN	apt-get -y update \
-&&	apt-get -y install perl openjdk11 gnuplot wget \
+&&	apt-get -y install perl openjdk-11-jre-headless gnuplot wget \
 &&	cd /tmp \
 &&	wget https://github.com/marbl/canu/releases/download/v1.7.1/canu-1.7.1.Linux-amd64.tar.xz \
 &&	tar xf canu-1.7.1.Linux-amd64.tar.xz \
@@ -10,7 +10,9 @@ RUN	apt-get -y update \
 &&	cp -r Linux-amd64/lib/*	/usr/local/lib/ \
 &&	cp -r Linux-amd64/share/* /usr/local/share/ \
 &&	cd / \
-&&	rm -rf /tmp/*
+&&	apt-get -y autoremove wget \
+&&	rm -rf /tmp/* \
+&&	rm -rf /var/lib/apt/lists/*
 
 LABEL	tool=canu version=1.7.1
 
