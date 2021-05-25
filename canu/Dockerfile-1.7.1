@@ -1,6 +1,7 @@
-FROM 	alpine
+FROM 	ubuntu:18.04
 
-RUN	apk add perl openjdk11 gnuplot \
+RUN	apt-get -y update \
+&&	apt-get -y install perl openjdk11 gnuplot wget \
 &&	cd /tmp \
 &&	wget https://github.com/marbl/canu/releases/download/v1.7.1/canu-1.7.1.Linux-amd64.tar.xz \
 &&	tar xf canu-1.7.1.Linux-amd64.tar.xz \
