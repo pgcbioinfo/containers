@@ -1,7 +1,8 @@
 FROM 	ubuntu:18.04
 
 RUN	apt-get -y update \
-&&	apt-get -y install perl openjdk-11-jre-headless gnuplot wget xz-utils \
+&&	apt-get -y install wget \
+&&	apt-get -y install perl openjdk-11-jre-headless gnuplot xz-utils libgomp1 \
 &&	cd /tmp \
 &&	wget https://github.com/marbl/canu/releases/download/v2.1.1/canu-2.1.1.Linux-amd64.tar.xz \
 &&	tar xf canu-2.1.1.Linux-amd64.tar.xz \
